@@ -40,6 +40,8 @@
 # TODO: arb: make better use of event callbacks
 # TODO: *arb: drop select on/off could be more generic/reusable
 # TODO: *arb: color prototype needs more thought
+# TODO: *arb: colorized selected drop down list to we known the mode
+
 
 import arena
 import argparse
@@ -218,7 +220,7 @@ class Button:
             objName=objName,
             objType=arena.Shape.cube,
             parent=parent,
-            data=('{"material": {"transparent":true,"opacity":0.4}'
+            data=('{"material":{"transparent":true,"shader":"flat","opacity":0.4}'
                   #',"sound": {"positional":true,"poolSize":8,"volume":0.1,'
                   #'"src":"' + CLICK_SND + '","on":"mousedown"}'
                   '}'),
