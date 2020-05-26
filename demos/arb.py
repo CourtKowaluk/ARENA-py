@@ -2,9 +2,6 @@
 #
 # AR Builder
 # Pass in args for scene name and/or broker and realm.
-# Left click/tilt: cycle builder modes.
-# Right click/tilt: cycle mode options.
-# Mouse/reticle click/tap: activate mode action.
 
 # future:
 #    occlude/unocclude scene (non-persist)
@@ -24,22 +21,29 @@
 # TODO: arena: move relative position lock into server js to...
 # TODO: ...prevent latency follow lock outside click/reticle
 # TODO: arb: what is source of origin reset in XR?
-# TODO: arb: fix follow unlock position relative, not default
+# TODO: *arb: fix follow unlock position relative, not default
 # TODO: arb: why is AR click sometimes hard to fire?
 # TODO: arb: handle click-listener objects with 1.1 x scale shield?
 # TODO: *arb: nudge-line unclickable in AR
-# TODO: arb: models in clipboard origin may be outside reticle
-# TODO: *arb: shapes panel
+# TODO: *arb: models in clipboard origin may be outside reticle
 # TODO: arb: models panel
-# TODO: arb: Send kill signal to display on exit or crash?
-# TODO: arb: Scale all with three dof
-# TODO: arb: Rotate placeholder
+# TODO: *arb: Send kill signal to display on exit or crash?
+# TODO: *arb: Scale all with three dof
 # TODO: arb: Latency bottom corner camera control updates
 # TODO: arb: recreated button child text not rendering
 # TODO: arena: enable data:source in callback for ClickEvent
-# TODO: arb: make better use of event callbacks
+# TODO: *arb: make better use of event callbacks
 # TODO: *arb: drop select on/off could be more generic/reusable
-# TODO: *arb: color prototype needs more thought
+# TODO: *arb: colorized selected drop down list to we known the mode
+# TODO: arb: gridlines on floor/cieling, circles follow position
+# TODO: arb: hud update of position
+# TODO: *arb: Dead man switch timer ttl revealed when not
+# TODO: arb: Show light sources
+# TODO: arb: Is camera inside a shape?
+# TODO: *arb: document theory/structure of builder
+# TODO: *arb: are other users prevented from clicking others buttons?
+# TODO: *arb: add easy doc overlay for each button operation
+
 
 import arena
 import argparse
