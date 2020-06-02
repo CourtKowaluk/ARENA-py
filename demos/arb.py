@@ -121,11 +121,30 @@ class User:
         self.locky = LOCK_YOFF
         self.lockx = LOCK_XOFF
 
-        # origin object
-        arena.Object(objType=arena.Shape.cube, objName="arb-origin",
-                     data='{"material": {"transparent": true, "opacity": 0.3}}',
-                     location=(0, 0, 0), color=(255, 0, 0),
-                     scale=(0.1, 0.1, 0.1))
+        # origin object, construction cone
+        c = [0.2, 0.4, 0.2]
+        cone = arena.Object(  # 370mm x 370mm # 750mm
+            objType=arena.Shape.cone, objName="arb-origin",
+            data='{"material": {"transparent":true,"shader":"flat","opacity":0.8}}',
+            color=(255, 114, 33),
+            location=(0, c[1] / 2, 0),
+            scale=(c[0] / 2, c[1], c[2] / 2),
+        )
+        hole = arena.Object(
+            objType=arena.Shape.cone, objName="arb-origin-hole",
+            data='{"material":{"colorWrite":false},"render-order":"0"}',
+            location=(0, c[1] - (c[1] / 2 / 15), 0),
+            scale=(c[0] / 15, c[1] / 15, c[2] / 15),
+            # parent=cone.objName,
+        )
+        base = arena.Object(
+            objType=arena.Shape.cube, objName="arb-origin-base",
+            data='{"material": {"transparent":true,"shader":"flat","opacity":0.8}}',
+            color=(0, 0, 0),
+            location=(0, c[1] / 20, 0),
+            scale=(c[0], c[1] / 10, c[2]),
+            # parent=cone.objName,
+        )
 
         # set HUD to each user
         self.clipboard = set_clipboard(camname)
@@ -208,7 +227,10 @@ class Button:
             colortxt = "ffffff"
         else:
             colorbut = colortxt = "808080"
-
+        if len(label) > 8:  # easier to read
+            self.label = label[:6] + "..."
+        else:
+            self.label = label
         self.mode = mode
         self.dropdown = drop
         self.on = False
@@ -236,7 +258,7 @@ class Button:
             objName=("text_" + self.button.objName),
             objType=arena.Shape.text,
             parent=self.button.objName,
-            data='{"text":"' + label + '"}',
+            data='{"text":"' + self.label + '"}',
             location=(0, 0, -0.1),  # location inside to prevent ray events
             color=self.colortxt,
             scale=(1, 1, 1),
